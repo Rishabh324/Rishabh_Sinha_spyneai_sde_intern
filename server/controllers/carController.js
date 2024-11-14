@@ -282,7 +282,7 @@ exports.searchCar = async (req,res) => {
                 message: "User not found"
             })
         }
-
+        
         const carData = await carModel.aggregate([
             {
                 $search: {
@@ -295,7 +295,7 @@ exports.searchCar = async (req,res) => {
             },
             {
                 $match: {
-                    createdBy: user._id // Limit to the user's cars
+                    createdBy: req.body.id // Limit to the user's cars
                 }
             }
         ]);
