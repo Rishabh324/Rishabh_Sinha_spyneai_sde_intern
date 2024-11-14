@@ -38,7 +38,7 @@ const swaggerOptions = {
 }
 
 const corsOptions = {
-    origin: 'https://rishabh-sinha-spyneai-sde-intern.vercel.app',
+    origin: '*',
     optionsSuccessStatus: 200
 };
 
