@@ -52,6 +52,12 @@ exports.getMyCars = async (req,res) => {
         res.status(200).json({
             status: "Success",
             message: "Cars fetched successfully.",
+            headers:{
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+
+            },
             data
         });
     } catch(err){
@@ -81,6 +87,11 @@ exports.getCarDetails = async (req,res) => {
         res.status(200).json({
             status: "Success",
             message: "Cars fetched successfully.",
+            headers:{
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            },
             data
         });
     } catch(err){
@@ -110,8 +121,15 @@ exports.createCar = async (req,res) => {
         res.status(200).json({
             status: "Success",
             message: "Car created successfully.",
+            headers:{
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+
+            },
             car
-        });
+        }
+    );
     } catch(err){
         console.log(err);
         res.status(400).json({
@@ -157,8 +175,13 @@ exports.deleteCar = async (req, res) => {
     await carModel.findByIdAndDelete(id);
 
     res.status(200).json({
-      status: 'Success',
-      message: 'Car and associated images deleted successfully.',
+        status: 'Success',
+        message: 'Car and associated images deleted successfully.',
+        headers:{
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        },
     });
   } catch (error) {
     console.error('Error deleting car and images:', error);
@@ -235,6 +258,11 @@ exports.updateCarDetails = async (req, res) => {
       res.status(200).json({
         status: 'Success',
         message: 'Car updated successfully.',
+        headers:{
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        },
         car: updatedCar,
       });
     } catch (error) {
@@ -271,6 +299,11 @@ exports.searchCar = async (req,res) => {
         res.status(200).json({
             status: "Success",
             message: "Cars fetched successfully.",
+            headers:{
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            },
             data: carData
         });
 

@@ -37,11 +37,16 @@ const swaggerOptions = {
     apis: ['./routes/*.js'],
 }
 
+const corsOptions = {
+    origin: 'https://rishabh-sinha-spyneai-sde-intern.vercel.app',
+    optionsSuccessStatus: 200
+};
+
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 //middlewares
 app.use(express.json({limit: "50mb"}));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
 //routes

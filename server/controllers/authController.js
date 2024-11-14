@@ -64,6 +64,12 @@ exports.loginController = async (req, res) => {
                 status: "Success",
                 message: "User logged in.",
                 data: user,
+                headers:{
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+
+                },
                 token
             })
         }
@@ -92,6 +98,11 @@ exports.getCurrentUser = async (req, res) => {
             res.status(200).json({
                 status: "Success",
                 message: "User fetched successfully.",
+                headers:{
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                },
                 user
             })            
         }
