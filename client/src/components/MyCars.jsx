@@ -84,7 +84,7 @@ const MyCars = () => {
             <img src={car.imgsUrl[0]} alt='car' className='rounded-lg h-48 w-full object-cover'/>
             <div className='flex justify-between mt-2' onClick={()=>navigate(`/my-cars/${car._id}`)}>
               <h1 className='text-xl font-semibold'>{car.carTitle}</h1>
-              <p className='text-lg font-semibold'>${car.carModel}</p>
+              <p className='text-lg font-semibold'>{car.carModel}</p>
             </div>
             <div className='flex gap-2'>
               {car.tags?.map((tag, index)=>(

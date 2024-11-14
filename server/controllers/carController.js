@@ -275,6 +275,15 @@ exports.updateCarDetails = async (req, res) => {
 exports.searchCar = async (req,res) => {
     try{
         //validating the user
+        console.log(req);
+        const user = await userModel?.findOne({ _id: req.body.id });
+        if (!user) {
+            return res.status(404).json({
+                status: "failed",
+                message: "User not found"
+            })
+        }
+
         console.log(req.params.text);
         const carData = await carModel.aggregate([
             {
@@ -288,7 +297,7 @@ exports.searchCar = async (req,res) => {
             },
             {
                 $match: {
-                    createdBy: req.body.id // Limit to the user's cars
+                    createdBy: user._id // Limit to the user's cars
                 }
             }
         ]);
