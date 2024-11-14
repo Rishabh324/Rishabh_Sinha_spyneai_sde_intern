@@ -75,19 +75,19 @@ const CreateCars = () => {
       <div className='p-4'>
         <div className='flex flex-col'>
           <label htmlFor='carTitle' className='text-lg font-semibold'>Car Title</label>
-          <input type='text' id='carTitle' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
+          <input type='text' id='carTitle' value={formData.carTitle} placeholder='Enter Title' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
         </div>
         <div className='flex flex-col my-4'>
           <label htmlFor='carDescription' className='text-lg font-semibold'>Car Description</label>
-          <input type='text' id='carDescription' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
+          <input type='text' id='carDescription' value={formData.carDescription} placeholder='Enter Description' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
         </div>
         <div className='flex flex-col my-4'>
           <label htmlFor='carModel' className='text-lg font-semibold'>Car Model</label>
-          <input type='text' id='carModel' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
+          <input type='text' id='carModel' value={formData.carModel} placeholder='Enter Model' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
         </div>
         <div className='flex flex-col my-4'>
           <label htmlFor='tags' className='text-lg font-semibold'>Car Tags</label>
-          <input type='text' id='tags' value={tag} className='border-2 border-gray-300 rounded-lg p-2' onChange={(e)=>setTag(e.target.value)} onKeyDown={(e)=>handleKeyPress(e)} />
+          <input type='text' id='tags' value={tag} placeholder='Enter Tags' className='border-2 border-gray-300 rounded-lg p-2' onChange={(e)=>setTag(e.target.value)} onKeyDown={(e)=>handleKeyPress(e)} />
           <div className='flex gap-2 mt-2'>
           {
             formData.tags.map((tag, index)=>(
