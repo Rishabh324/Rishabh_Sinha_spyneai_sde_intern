@@ -14,7 +14,7 @@ exports.uploadCarImages = async (req, res, next) => {
                     folder: 'uploads' // Optional folder name in Cloudinary
                 });
             });
-            console.log(uploadPromises);
+            console.log(uploadPromises, 17);
             
             // Use Promise.all to wait for all images to upload
             const results = await Promise.all(uploadPromises?.map(p => p.catch(e => e)));
@@ -26,6 +26,7 @@ exports.uploadCarImages = async (req, res, next) => {
             const imageUrls = results?.map((result) => result.secure_url);
             // Respond with the Cloudinary URLs
             req.body.imgsUrl = imageUrls;
+            console.log(req.body, 29);
     
             next();
         });
@@ -107,6 +108,7 @@ exports.getCarDetails = async (req,res) => {
 exports.createCar = async (req,res) => {
     try{
         //validating the user
+        console.log(req.body, 111);
         const user = await userModel.findOne({ _id: req.body.id});
         if (!user) {
             return res.status(404).json({
@@ -117,7 +119,7 @@ exports.createCar = async (req,res) => {
 
         // //creating the car
         req.body.createdBy = user._id;
-        console.log(req.body);
+        console.log(req.body, 122);
         const car = await carModel.create(req.body);        
         res.status(200).json({
             status: "Success",
@@ -126,7 +128,6 @@ exports.createCar = async (req,res) => {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-
             },
             car
         }
