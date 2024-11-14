@@ -8,9 +8,7 @@ A modern web application for car enthusiasts to manage their car collections eff
 
 CarCollector's Haven is a comprehensive web application designed to help car enthusiasts and collectors manage their car collections effortlessly. It provides an intuitive platform where users can securely create, view, edit, and delete car entries, each enriched with detailed information and visual content.
 
-Key features include:
-
-Key Features:
+### Key Features:
 
 1. User Authentication: Secure login and signup system to manage access.
 2. Car Management:
