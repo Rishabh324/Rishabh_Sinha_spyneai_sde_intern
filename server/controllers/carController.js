@@ -10,7 +10,6 @@ exports.uploadCarImages = async (req, res, next) => {
   try {
         upload.array('imgsUrl', 10)(req,res, async()=>{
             const uploadPromises = req.body.imgsUrl?.map((file) => {
-                console.log(file, 13);
                 return cloudinary.uploader.upload(file, {
                     folder: 'uploads' // Optional folder name in Cloudinary
                 });
@@ -18,7 +17,6 @@ exports.uploadCarImages = async (req, res, next) => {
             
             // Use Promise.all to wait for all images to upload
             const results = await Promise.all(uploadPromises?.map(p => p.catch(e => e)));
-            console.log(results, 21);
             // Remove temporary files from server after upload
             // req.files.forEach((file) => fs.unlinkSync(file.path));
     
@@ -26,7 +24,6 @@ exports.uploadCarImages = async (req, res, next) => {
             const imageUrls = results?.map((result) => result.secure_url);
             // Respond with the Cloudinary URLs
             req.body.imgsUrl = imageUrls;
-            console.log(req.body, 29);
     
             next();
         });
@@ -38,7 +35,6 @@ exports.uploadCarImages = async (req, res, next) => {
 exports.getMyCars = async (req,res) => {
     try{
         //validating the user
-        console.log(req.body);
         const user = await userModel.findOne({ _id: req.body.id });
         if (!user) {
             return res.status(404).json({
@@ -201,7 +197,6 @@ exports.updateCarDetails = async (req, res) => {
       const { delImgs = [], ...updateData } = req.body; // Get fields to update and images to remove
   
       // Step 1: Find the car by ID
-      console.log(req.body, id);
       const car = await carModel.findById(id);
       if (!car) {
         return res.status(404).json({ message: 'Car not found' });

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import API from '../services/API';
 import { toast } from 'react-toastify';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const EditCar = () => {
     const location = useLocation();
@@ -10,6 +10,7 @@ const EditCar = () => {
     const [imgs, setImgs] = useState([]);
     const [newImgs, setNewImgs] = useState([]);
     const [delImgs, setDelImgs] = useState([]);
+    const navigate = useNavigate();
 
     const [tag, setTag] = useState("");
 
@@ -68,7 +69,7 @@ const EditCar = () => {
             );
             if(response.data.status === "Success") {
                 toast.success("Car updated successfully");
-                navigator('/my-cars');
+                navigate('/my-cars');
             }
         } catch(err){
             toast.error("Failed to update car");
