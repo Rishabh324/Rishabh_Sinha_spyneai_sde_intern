@@ -117,6 +117,7 @@ exports.createCar = async (req,res) => {
 
         // //creating the car
         req.body.createdBy = user._id;
+        console.log(req.body);
         const car = await carModel.create(req.body);        
         res.status(200).json({
             status: "Success",
