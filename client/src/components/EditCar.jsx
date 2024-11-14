@@ -91,9 +91,9 @@ const EditCar = () => {
 
     return (
         <div>
-            <h1 className='text-3xl font-semibold'>Edit Your Car</h1>
             <div className='p-4'>
-                <div className='flex flex-col'>
+                <h1 className='text-3xl font-semibold'>Modify Your Car</h1>
+                <div className='flex flex-col mt-4'>
                     <label htmlFor='carTitle' className='text-lg font-semibold'>Car Title</label>
                     <input type='text' id='carTitle' value={formData.carTitle} className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
                 </div>
@@ -125,7 +125,7 @@ const EditCar = () => {
                     <label htmlFor='imgsUrl' className='text-lg font-semibold'>Car Image</label>
                     <input type='file' accept='image/*' multiple id='imgsUrl' className='border-2 border-gray-300 rounded-lg p-2' onChange= {handleImageChange} />
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 overflow-x-scroll'>
                     {
                         imgs?.map((img, index)=>(
                             <img key={index} src={img} alt='car' className='h-48 w-48 object-cover rounded-lg' onClick={()=>{

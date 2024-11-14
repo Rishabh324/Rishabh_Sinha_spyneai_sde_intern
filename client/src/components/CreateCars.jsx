@@ -84,9 +84,9 @@ const CreateCars = () => {
 
   return (
     <div>
-      <h1 className='text-3xl font-semibold'>Create Your Car</h1>
       <div className='p-4'>
-        <div className='flex flex-col'>
+        <h1 className='text-3xl font-semibold'>Add a car to your heaven of cars</h1>
+        <div className='flex flex-col mt-4'>
           <label htmlFor='carTitle' className='text-lg font-semibold'>Car Title</label>
           <input type='text' id='carTitle' value={formData.carTitle} placeholder='Enter Title' className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
         </div>

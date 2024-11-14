@@ -13,7 +13,7 @@ const Header = () => {
         </div>
       ) : null}
       <div>
-        <h1 className="text-center text-3xl ">Carkare</h1>
+        <h1 className="text-center text-3xl ">CarCollector&apos;s Haven</h1>
       </div>
       {isMobile ? <div></div> : null}
     </div>
