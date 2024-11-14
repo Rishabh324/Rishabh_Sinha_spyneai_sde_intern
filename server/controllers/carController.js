@@ -10,15 +10,15 @@ exports.uploadCarImages = async (req, res, next) => {
   try {
         upload.array('imgsUrl', 10)(req,res, async()=>{
             const uploadPromises = req.body.imgsUrl?.map((file) => {
+                console.log(file, 13);
                 return cloudinary.uploader.upload(file.path, {
                     folder: 'uploads' // Optional folder name in Cloudinary
                 });
             });
-            console.log(uploadPromises, 17);
             
             // Use Promise.all to wait for all images to upload
             const results = await Promise.all(uploadPromises?.map(p => p.catch(e => e)));
-    
+            console.log(results, 21);
             // Remove temporary files from server after upload
             // req.files.forEach((file) => fs.unlinkSync(file.path));
     
