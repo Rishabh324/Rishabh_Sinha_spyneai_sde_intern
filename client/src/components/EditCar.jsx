@@ -93,7 +93,7 @@ const EditCar = () => {
         <div>
             <div className='p-4'>
                 <h1 className='text-3xl font-semibold'>Modify Your Car</h1>
-                <div className='flex flex-col mt-4'>
+                <div className='flex flex-col my-4'>
                     <label htmlFor='carTitle' className='text-lg font-semibold'>Car Title</label>
                     <input type='text' id='carTitle' value={formData.carTitle} className='border-2 border-gray-300 rounded-lg p-2' onChange={handleInputChange} />
                 </div>
@@ -110,13 +110,13 @@ const EditCar = () => {
                     <input type='text' id='tags' value={tag} className='border-2 border-gray-300 rounded-lg p-2' onChange={(e)=>setTag(e.target.value)} onKeyDown={(e)=>handleKeyPress(e)} />
                     <div className='flex gap-2 mt-2'>
                     {
-                        formData?.tags?.map((tag, index)=>(
-                        <p key={index} value={formData.carTitle} className='px-2 py-1 cursor-pointer rounded-3xl border-2 border-blue-800 bg-blue-300 text-blue-800' onClick={
+                        formData?.tags?.map((tagname, index)=>(
+                            <p key={index} className='px-2 py-1 cursor-pointer rounded-3xl border-2 border-blue-800 bg-blue-300 text-blue-800' onClick={
                             ()=>setFormData({
-                            ...formData,
-                            tags: formData.tags.filter((t, i)=> i !== index)
+                                ...formData,
+                                tags: formData.tags.filter((t, i)=> i !== index)
                             })
-                        }>{tag}</p>
+                        }>{tagname}</p>
                         ))
                     }
                     </div>

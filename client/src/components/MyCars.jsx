@@ -84,15 +84,15 @@ const MyCars = () => {
       <div className='grid grid-cols-3 gap-3'>
         {tableData?.map((car, index) => (
           <div key={index} className='flex flex-col cursor-pointer justify-between border rounded-lg border-gray-300 p-4 my-4'>
-            <div>
+            <div onClick={()=>navigate(`/my-cars/${car._id}`)}>
               <img src={car.imgsUrl[0]} alt='car' className='rounded-lg h-48 w-full object-cover'/>
               <div className='flex justify-between mt-2'>
                 <h1 className='text-xl font-semibold'>{car.carTitle}</h1>
                 <p className='text-lg font-semibold'>{car.carModel}</p>
               </div>
-              <div className='flex gap-2 mt-2'>
+              <div className='flex flex-wrap gap-2 mt-2'>
                 {car.tags?.map((tag, index)=>(
-                  <p key={index} className='px-2 py-1 rounded-3xl border-2 border-blue-800 bg-blue-300 text-blue-800'>{tag}</p>
+                  index<=5 && <p key={index} className='px-2 py-1 rounded-3xl border-2 border-blue-800 bg-blue-300 text-blue-800'>{tag}</p>
                 ))}
               </div>
             </div>

@@ -45,7 +45,7 @@ const CarDetails = () => {
                 </div>
                 <div className='flex gap-2 mt-3'>
                     <p className='text-xl font-semibold'>Tags:</p>
-                    <div className='flex'>
+                    <div className='flex gap-2'>
                     {
                         carData.tags?.map((tag, index)=>(
                             <p key={index} className='px-2 py-1 rounded-3xl border-2 border-blue-800 bg-blue-300 text-blue-800'>{tag}</p>
