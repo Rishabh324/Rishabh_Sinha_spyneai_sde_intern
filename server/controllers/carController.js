@@ -275,7 +275,6 @@ exports.updateCarDetails = async (req, res) => {
 exports.searchCar = async (req,res) => {
     try{
         //validating the user
-        console.log(req);
         const user = await userModel?.findOne({ _id: req.body.id });
         if (!user) {
             return res.status(404).json({
@@ -284,14 +283,13 @@ exports.searchCar = async (req,res) => {
             })
         }
 
-        console.log(req.params.text);
         const carData = await carModel.aggregate([
             {
                 $search: {
                     index: "default",
                     text: {
-                    query: req.params.text,
-                    path: ["carTitle", "carDescription", "tags"]
+                        query: req.params.text,
+                        path: ["carTitle", "carDescription", "tags"]
                     }
                 }
             },
