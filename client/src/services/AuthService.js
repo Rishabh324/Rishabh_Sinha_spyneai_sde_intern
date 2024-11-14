@@ -15,7 +15,6 @@ export const handleLogin = (e, email, password) => {
 export const handleRegister = (e, email, name, password) => {
     e.preventDefault();
     try {
-        console.log("here");
         store.dispatch(userRegister({ e, email, password, name }));
     }
     catch (err) {

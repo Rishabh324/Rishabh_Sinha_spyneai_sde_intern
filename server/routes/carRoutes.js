@@ -43,6 +43,10 @@ const { createCar, getMyCars, getCarDetails, uploadCarImages, updateCarDetails, 
  *         description: Car created successfully
  *       400:
  *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized access  
+ *       404:
+ *         description: Invalid input data
  *       500:
  *         description: Server error
  */
@@ -60,8 +64,12 @@ router
  *     responses:
  *       200:
  *         description: List of cars
+ *       400:
+ *         description: Invalid input data
  *       401:
  *         description: Unauthorized access
+ *       404:
+ *         description: No cars found
  *       500:
  *         description: Server error
  */
@@ -116,6 +124,8 @@ router
  *         description: Car updated successfully
  *       400:
  *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized access
  *       404:
  *         description: Car not found
  *       500:
@@ -142,6 +152,8 @@ router
  *     responses:
  *       200:
  *         description: Car details fetched successfully
+ *       400:
+ *         description: Invalid input data
  *       404:
  *         description: Car not found
  *       500:
@@ -168,6 +180,10 @@ router
  *     responses:
  *       200:
  *         description: List of cars matching the search criteria
+ *       400:
+ *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized access
  *       404:
  *         description: No cars found
  *       500:
@@ -194,6 +210,10 @@ router
  *     responses:
  *       200:
  *         description: Car deleted successfully
+ *       400:
+ *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized access
  *       404:
  *         description: Car not found
  *       500:

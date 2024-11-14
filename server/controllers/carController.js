@@ -34,10 +34,6 @@ exports.uploadCarImages = async (req, res, next) => {
     }
 };
 
-exports.deleteFromCloudinary = async (req, res) => {
-
-};
-
 exports.getMyCars = async (req,res) => {
     try{
         //validating the user
@@ -109,7 +105,6 @@ exports.createCar = async (req,res) => {
         }
 
         // //creating the car
-        // console.log(req.body)
         req.body.createdBy = user._id;
         const car = await carModel.create(req.body);        
         res.status(200).json({
@@ -187,7 +182,6 @@ exports.updateCarDetails = async (req, res) => {
         return res.status(404).json({ message: 'Car not found' });
       }
       
-      console.log(delImgs);
       // Step 2: Remove specified images from Cloudinary if any are to be removed
       if (delImgs.length > 0) {
         const deletePromises = delImgs?.map((url) => {
@@ -202,8 +196,6 @@ exports.updateCarDetails = async (req, res) => {
         // Remove the images from the imgsUrl array in the car object
         car.imgsUrl = car.imgsUrl?.filter((url) => !delImgs.includes(url));
       }
-
-      console.log(req.body.newImgs);
   
       // Step 3: Handle new image uploads if any new images are provided
       if (req.body.newImgs && req.body.newImgs.length > 0) {
@@ -218,10 +210,7 @@ exports.updateCarDetails = async (req, res) => {
   
         // Append new images to the existing ones
         car.imgsUrl = [...car.imgsUrl, ...newImageUrls];
-        console.log(car.imgsUrl);
       }
-
-      console.log("new to cloud", car);
   
       // Step 4: Update other fields
       Object.keys(updateData).forEach((key) => {
@@ -243,7 +232,6 @@ exports.updateCarDetails = async (req, res) => {
                 message: "Car not found."
             });
         }
-      console.log(updatedCar);
       res.status(200).json({
         status: 'Success',
         message: 'Car updated successfully.',

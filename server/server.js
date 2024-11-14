@@ -30,7 +30,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:5000', // Replace with your server URL
+                url: 'https://rishabh-sinha-spyneai-sde-intern.onrender.com', // Replace with your server URL
             },
         ],
     },

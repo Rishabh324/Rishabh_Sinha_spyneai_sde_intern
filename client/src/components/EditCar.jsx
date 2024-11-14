@@ -59,6 +59,7 @@ const EditCar = () => {
             const response = await API.patch(`/cars/edit/${id}`, formData);
             if(response.data.status === "Success") {
                 toast.success("Car updated successfully");
+                navigator('/my-cars');
             }
         } catch(err){
             toast.error("Failed to update car");
@@ -75,10 +76,6 @@ const EditCar = () => {
             delImgs: []
         })
     },[location.state]);
-
-    console.log("del", delImgs);
-    console.log("new", newImgs);
-    console.log({formData});
 
     return (
         <div>

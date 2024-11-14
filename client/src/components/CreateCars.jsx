@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import API from '../services/API';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const CreateCars = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     carTitle: '',
     carDescription: '',
@@ -29,7 +31,7 @@ const CreateCars = () => {
     const base64Images = await convertFilesToBase64(files);
     setFormData({
       ...formData,
-      imgsUrl: [...formData.imgsUrl, ...base64Images]
+      imgsUrl: [{...formData.imgsUrl, ...base64Images}]
     })
   };
 
@@ -59,6 +61,7 @@ const CreateCars = () => {
       const response = await API.post('/cars/create-car', formData);
       if(response.data.status === "Success") {
         toast.success("Car added successfully");
+        navigate('/my-cars');
       }
     } catch(err){
       toast.error("Failed to add car");

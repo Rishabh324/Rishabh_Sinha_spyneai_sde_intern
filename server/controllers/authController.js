@@ -7,7 +7,7 @@ exports.registerController = async (req, res) => {
         //check if user already exists
         const existingUser = await userModel.findOne({ email: req.body.email });
         if (existingUser) {
-            return res.status(200).json({
+            return res.status(409).json({
                 status: "failed",
                 message: "user already exists"
             })
@@ -30,7 +30,7 @@ exports.registerController = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(400).json({
+        res.status(500).json({
             status: "Process Terminated",
             message: "Failed at Register API",
             err
@@ -53,7 +53,7 @@ exports.loginController = async (req, res) => {
         //compare password
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
         if (!isPasswordCorrect) {
-            return res.status(500).json({
+            return res.status(400).json({
                 status: "Failed",
                 message: "Invalid Credentials"
             })
@@ -70,7 +70,7 @@ exports.loginController = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(400).json({
+        res.status(500).json({
             status: "Process Terminated",
             message: "Failed at Login API",
             err
@@ -82,16 +82,24 @@ exports.getCurrentUser = async (req, res) => {
     try {
         //fetching the user
         const user = await userModel.findOne({ _id: req.body.id });
-        res.status(200).json({
-            status: "Success",
-            message: "User fetched successfully.",
-            user
-        })
+        
+        if (!user) {
+            return res.status(404).json({
+                status: "Failed",
+                message: "User not found."
+            })
+        } else {
+            res.status(200).json({
+                status: "Success",
+                message: "User fetched successfully.",
+                user
+            })            
+        }
     }
     catch (err) {
         res.status(500).json({
             status: "Failed",
-            message: "Unable to get current user."
+            message: "failed at get current user."
         })
     }
 }
