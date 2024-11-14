@@ -28,11 +28,15 @@ const CreateCars = () => {
 
   const handleImageChange = async (event) => {
     const files = event.target.files;
-    const base64Images = await convertFilesToBase64(files);
-    setFormData({
-      ...formData,
-      imgsUrl: [...formData.imgsUrl, ...base64Images]
-    })
+    if((files.length + formData.imgsUrl) <= 10){
+      const base64Images = await convertFilesToBase64(files);
+      setFormData({
+        ...formData,
+        imgsUrl: [...formData.imgsUrl, ...base64Images]
+      })
+    } else {
+      toast.error("You can upload maximum 10 images");
+    }
   };
 
   const convertFilesToBase64 = (files) => {
