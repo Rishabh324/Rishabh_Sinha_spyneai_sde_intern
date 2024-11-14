@@ -8,7 +8,6 @@ const EditCar = () => {
     const { id } = useParams();
     const [formData, setFormData] = useState([]);
     const [imgs, setImgs] = useState([]);
-    const [newImgs, setNewImgs] = useState([]);
     const [delImgs, setDelImgs] = useState([]);
     const navigate = useNavigate();
 

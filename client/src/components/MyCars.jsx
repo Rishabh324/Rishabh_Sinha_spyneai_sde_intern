@@ -23,8 +23,8 @@ const MyCars = () => {
     } catch(err){
         console.log(err);
     }
-  }
-  console.log(tableData);
+  };
+
   useEffect(() => {
     getCarList();
   }, []);
@@ -51,17 +51,20 @@ const MyCars = () => {
 
   const handleSearch = async () => {
     try{
-      const response = await API.get(`/cars/search/${searchText}`, 
-        {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      if(searchText===""){
+        getCarList();
+      } else {
+        const response = await API.get(`/cars/search/${searchText}`, 
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+              'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            }
           }
-        }
-      );
-      console.log(response);
-      setTableData(response.data.data);
+        );
+        setTableData(response.data.data);
+      }
     } catch(err){
       console.log(err);
     }
