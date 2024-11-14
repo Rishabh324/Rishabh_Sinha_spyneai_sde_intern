@@ -11,7 +11,7 @@ exports.uploadCarImages = async (req, res, next) => {
         upload.array('imgsUrl', 10)(req,res, async()=>{
             const uploadPromises = req.body.imgsUrl?.map((file) => {
                 console.log(file, 13);
-                return cloudinary.uploader.upload(file.path, {
+                return cloudinary.uploader.upload(file, {
                     folder: 'uploads' // Optional folder name in Cloudinary
                 });
             });
