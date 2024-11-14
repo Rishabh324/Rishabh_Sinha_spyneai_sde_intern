@@ -31,7 +31,7 @@ const CreateCars = () => {
     const base64Images = await convertFilesToBase64(files);
     setFormData({
       ...formData,
-      imgsUrl: [{...formData.imgsUrl, ...base64Images}]
+      imgsUrl: [...formData.imgsUrl, ...base64Images]
     })
   };
 
