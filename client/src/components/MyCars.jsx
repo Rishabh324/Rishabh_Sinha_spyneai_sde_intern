@@ -11,7 +11,14 @@ const MyCars = () => {
   const [searchText, setSearchText] = useState('');
   const getCarList = async () => {
     try{
-      const response = await API.get('/cars/my-cars');
+      const response = await API.get('/cars/my-cars', 
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        }
+      });
       setTableData(response.data.data);
     } catch(err){
         console.log(err);
@@ -24,7 +31,15 @@ const MyCars = () => {
 
   const handleDelete = async (id) => {
     try{
-      const response = await API.delete(`/cars/delete-car/${id}`);
+      const response = await API.delete(`/cars/delete-car/${id}`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          }
+        }
+      );
       if(response.status === 200){
         toast.success('Car deleted successfully');
         getCarList();
@@ -36,7 +51,15 @@ const MyCars = () => {
 
   const handleSearch = async () => {
     try{
-      const response = await API.get(`/cars/search/${searchText}`);
+      const response = await API.get(`/cars/search/${searchText}`, 
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          }
+        }
+      );
       console.log(response);
       setTableData(response.data.data);
     } catch(err){

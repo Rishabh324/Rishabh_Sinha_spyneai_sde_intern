@@ -56,7 +56,16 @@ const EditCar = () => {
         e.preventDefault();
         try{
             console.log(formData);
-            const response = await API.patch(`/cars/edit/${id}`, formData);
+            const response = await API.patch(`/cars/edit/${id}`,
+                formData,
+                {
+                    headers: {
+                      'Access-Control-Allow-Origin': '*',
+                      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                      'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                    }
+                  }
+            );
             if(response.data.status === "Success") {
                 toast.success("Car updated successfully");
                 navigator('/my-cars');

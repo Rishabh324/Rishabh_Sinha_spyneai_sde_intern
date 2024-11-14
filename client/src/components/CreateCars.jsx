@@ -58,7 +58,16 @@ const CreateCars = () => {
     e.preventDefault();
     try{
       console.log(formData);
-      const response = await API.post('/cars/create-car', formData);
+      const response = await API.post('/cars/create-car', 
+        formData,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          }
+        }
+      );
       if(response.data.status === "Success") {
         toast.success("Car added successfully");
         navigate('/my-cars');
