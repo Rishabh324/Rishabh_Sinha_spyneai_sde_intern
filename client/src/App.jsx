@@ -8,6 +8,7 @@ import CreateCarPage from './pages/CreateCarPage';
 import MyCarsPage from './pages/MyCarsPage';
 import CarDetailsPage from './pages/CarDetailsPage';
 import EditCarPage from './pages/EditCarPage';
+import SwaggerDocsPage from './pages/SwaggerDocsPage';
 
 function App() {
 

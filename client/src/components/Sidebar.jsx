@@ -16,6 +16,7 @@ const Sidebar = () => {
                 <Link to='/' className="p-3">Profile</Link>
                 <Link to='/my-cars' className="p-3">My Cars</Link>
                 <Link to='/create-car' className="p-3">Create Car</Link>
+                <button className="p-3 text-start" onClick={()=> window.open('http://localhost:5000/api-docs', '_blank') }>Documentation</button>
             </div>
             <Link to='/login' className="p-3 bg-red-500 rounded-lg border-black border-2" onClick={logoutHandler}>Logout</Link>
         </div>
