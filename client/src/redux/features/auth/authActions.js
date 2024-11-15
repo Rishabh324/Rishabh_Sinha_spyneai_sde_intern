@@ -17,7 +17,7 @@ export const userLogin = createAsyncThunk(
                     }
                 }
             );
-            console.log(data);
+            
             if (data.status == "Success") {
                 localStorage.setItem('token', data.token);
                 window.location.replace('/');
